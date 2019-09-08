@@ -1,4 +1,24 @@
 [{
+    "id": 0,
+    "name": {
+      "english": "",
+      "japanese": "フシギダネ",
+      "chinese": "妙蛙种子"
+    },
+    "type": [
+      "",
+      ""
+    ],
+    "base": {
+      "HP": 45,
+      "Attack": 49,
+      "Defense": 49,
+      "Sp. Attack": 65,
+      "Sp. Defense": 65,
+      "Speed": 45
+    }
+  },
+    {
     "id": 1,
     "name": {
       "english": "Bulbasaur",
