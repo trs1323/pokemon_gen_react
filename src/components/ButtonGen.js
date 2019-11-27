@@ -12,34 +12,80 @@ export default class ButtonGen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            slot1: 0,
-            slot2: 0,
-            slot3: 0,
-            slot4: 0,
-            slot5: 0,
-            slot6: 0
+            generated: false
         };
         this.onChange = this.onChange.bind(this)
         this.onClick = this.onClick.bind(this)
+        this.isLoaded = this.isLoaded.bind(this)
     }
 
     onClick = () => this.setState({
-        slot1: Generate(),
-        slot2: Generate(),
-        slot3: Generate(),
-        slot4: Generate(),
-        slot5: Generate(),
-        slot6: Generate()
+        team: Generate(),
+        generated: true
+
     })
 
     onChange(e) {
-        const key = e.target.name;
+        var arr = this.state.team
+        const place = Number(e.target.name);
         const value = Number(e.target.value);
-        this.setState({ [key]: value + 1 });
+        if (value === 133) {
+            var eeveeNum = Math.floor(Math.random() * (4 - 1) + 1)
+            var removed = arr.splice(place, 1, value + eeveeNum)
+            this.setState({ team: arr });
+        } else {
+            var removed = arr.splice(place, 1, value + 1)
+            this.setState({ team: arr });
+        }
+
+    }
+
+    typeColor(type) {
+        if (type === "Grass") {
+            return 'grass type'
+        } else if (type === "Normal") {
+            return 'normal type'
+        } else if (type === "Fighting") {
+            return 'type fighting'
+        } else if (type === "Flying") {
+            return 'type flying'
+        } else if (type === "Poison") {
+            return 'type poison'
+        } else if (type === "Ground") {
+            return 'type ground'
+        } else if (type === "Rock") {
+            return 'type rock'
+        } else if (type === "Bug") {
+            return 'type bug'
+        } else if (type === "Ghost") {
+            return 'type ghost'
+        } else if (type === "Steel") {
+            return 'type steel'
+        } else if (type === "Fire") {
+            return 'type fire'
+        } else if (type === "Water") {
+            return 'type water'
+        } else if (type === "Electric") {
+            return 'type electric'
+        } else if (type === "Psychic") {
+            return 'type psychic'
+        } else if (type === "Ice") {
+            return 'type ice'
+        } else if (type === "Dragon") {
+            return 'type dragon'
+        } else if (type === "Dark") {
+            return 'type dark'
+        } else if (type === "Fairy") {
+            return 'type fairy'
+        }
+    }
+
+    isLoaded(slot) {
+        return ((this.state.team === undefined) ? 0 : this.state.team[slot])
     }
 
     render() {
-        const { slot1, slot2, slot3, slot4, slot5, slot6 } = this.state
+        const { team } = this.state
 
         return (
             <div className="container">
@@ -47,87 +93,99 @@ export default class ButtonGen extends Component {
                 {/* Pictures row 1 */}
                 <div className="row">
                     <div className="col">
-                        <img src={require(`../img/${slot1}.png`)} alt="" />
+                        <img src={require(`../img/${this.isLoaded(0)}.png`)} alt="" />
 
                     </div>
                     <div className="col">
-                        <img src={require(`../img/${slot2}.png`)} alt="" />
+                        <img src={require(`../img/${this.isLoaded(1)}.png`)} alt="" />
                     </div>
                     <div className="col">
-                        <img src={require(`../img/${slot3}.png`)} alt="" />
+                        <img src={require(`../img/${this.isLoaded(2)}.png`)} alt="" />
                     </div>
                 </div>
                 {/* name row 1 */}
                 <div className="row">
-                    <div className="col"><span className="badge badge-dark">{Object.values(data[slot1].name.english.toString())}</span></div>
-                    <div className="col"><span className="badge badge-dark">{Object.values(data[slot2].name.english.toString())}</span></div>
-                    <div className="col"><span className="badge badge-dark">{Object.values(data[slot3].name.english.toString())}</span></div>
+                    <div className="col">
+                        <span className="badge badge-dark">{Object.values(data[this.isLoaded(0)].name.english.toString())}</span>
+                    </div>
+                    <div className="col">
+                        <span className="badge badge-dark">{Object.values(data[this.isLoaded(1)].name.english.toString())}</span>
+                    </div>
+                    <div className="col">
+                        <span className="badge badge-dark">{Object.values(data[this.isLoaded(2)].name.english.toString())}</span>
+                    </div>
                 </div>
                 {/* Types row 1 */}
                 <div className="row">
                     <div className="col">
-                        <span className="badge badge-primary">{Object.values(data[slot1].type[0].toString())}</span> <span className="badge badge-secondary">{Secondary(slot1)}</span>
+                        <span className={this.typeColor(data[this.isLoaded(0)].type[0])} >{data[this.isLoaded(0)].type[0]}</span>
+                        <span className={this.typeColor(Secondary(this.isLoaded(0)))} >{Secondary(this.isLoaded(0))}</span>
                     </div>
                     <div className="col">
-                        <span className="badge badge-primary">{Object.values(data[slot2].type[0].toString())}</span> <span className="badge badge-secondary">{Secondary(slot2)}</span>
+                        <span className={this.typeColor(data[this.isLoaded(1)].type[0])} >{data[this.isLoaded(1)].type[0]}</span>
+                        <span className={this.typeColor(Secondary(this.isLoaded(1)))} >{Secondary(this.isLoaded(1))}</span>
                     </div>
                     <div className="col">
-                        <span className="badge badge-primary">{Object.values(data[slot3].type[0].toString())}</span> <span className="badge badge-secondary">{Secondary(slot3)}</span>
+                        <span className={this.typeColor(data[this.isLoaded(2)].type[0])} >{data[this.isLoaded(2)].type[0]}</span>
+                        <span className={this.typeColor(Secondary(this.isLoaded(2)))} >{Secondary(this.isLoaded(2))}</span>
                     </div>
                 </div>
-                {/* Button Row */}
+                {/* Evolve Row */}
                 <div className="row">
                     <div className="col">
-                        <button className={"btn btn-warning btn-sm" + (evolve.number.includes(slot1) ? '' : ' invisible')} name='slot1' value={slot1} onClick={this.onChange} >Evolve</button>
+                        <button className={"btn btn-warning btn-sm" + (evolve.number.includes(this.isLoaded(0)) ? '' : ' invisible')} name='0' value={this.isLoaded(0)} onClick={this.onChange} >Evolve</button>
                     </div>
                     <div className="col">
-                        <button className={"btn btn-warning btn-sm" + (evolve.number.includes(slot2) ? '' : ' invisible')} name='slot2' value={slot2} onClick={this.onChange} >Evolve</button>
+                        <button className={"btn btn-warning btn-sm" + (evolve.number.includes(this.isLoaded(1)) ? '' : ' invisible')} name='1' value={this.isLoaded(1)} onClick={this.onChange} >Evolve</button>
                     </div>
                     <div className="col">
-                        <button className={"btn btn-warning btn-sm" + (evolve.number.includes(slot3) ? '' : ' invisible')} name='slot3' value={slot3} onClick={this.onChange} >Evolve</button>
+                        <button className={"btn btn-warning btn-sm" + (evolve.number.includes(this.isLoaded(2)) ? '' : ' invisible')} name='2' value={this.isLoaded(2)} onClick={this.onChange} >Evolve</button>
                     </div>
                 </div>
                 <br />
                 {/* Picture row 2 */}
                 <div className="row">
                     <div className="col">
-                        <img src={require(`../img/${slot4}.png`)} alt="" />
+                        <img src={require(`../img/${this.isLoaded(3)}.png`)} alt="" />
                     </div>
                     <div className="col">
-                        <img src={require(`../img/${slot5}.png`)} alt="" />
+                        <img src={require(`../img/${this.isLoaded(4)}.png`)} alt="" />
                     </div>
                     <div className="col">
-                        <img src={require(`../img/${slot6}.png`)} alt="" />
+                        <img src={require(`../img/${this.isLoaded(5)}.png`)} alt="" />
                     </div>
                 </div>
                 {/* Name row 2 */}
                 <div className="row">
-                    <div className="col"><span className="badge badge-dark">{Object.values(data[slot4].name.english.toString())}</span></div>
-                    <div className="col"><span className="badge badge-dark">{Object.values(data[slot5].name.english.toString())}</span></div>
-                    <div className="col"><span className="badge badge-dark">{Object.values(data[slot6].name.english.toString())}</span></div>
+                    <div className="col"><span className="badge badge-dark">{Object.values(data[this.isLoaded(3)].name.english.toString())}</span></div>
+                    <div className="col"><span className="badge badge-dark">{Object.values(data[this.isLoaded(4)].name.english.toString())}</span></div>
+                    <div className="col"><span className="badge badge-dark">{Object.values(data[this.isLoaded(5)].name.english.toString())}</span></div>
                 </div>
                 {/* Type row 2 */}
                 <div className="row">
                     <div className="col">
-                        <span className="badge badge-primary">{Object.values(data[slot4].type[0].toString())}</span> <span className="badge badge-secondary">{Secondary(slot4)}</span>
+                        <span className={this.typeColor(data[this.isLoaded(3)].type[0])} >{data[this.isLoaded(3)].type[0]}</span>
+                        <span className={this.typeColor(Secondary(this.isLoaded(3)))} >{Secondary(this.isLoaded(3))}</span>
                     </div>
                     <div className="col">
-                        <span className="badge badge-primary">{Object.values(data[slot5].type[0].toString())}</span> <span className="badge badge-secondary">{Secondary(slot5)}</span>
+                        <span className={this.typeColor(data[this.isLoaded(4)].type[0])} >{data[this.isLoaded(4)].type[0]}</span>
+                        <span className={this.typeColor(Secondary(this.isLoaded(4)))} >{Secondary(this.isLoaded(4))}</span>
                     </div>
                     <div className="col">
-                        <span className="badge badge-primary">{Object.values(data[slot6].type[0].toString())}</span> <span className="badge badge-secondary">{Secondary(slot6)}</span>
+                        <span className={this.typeColor(data[this.isLoaded(5)].type[0])} >{data[this.isLoaded(5)].type[0]}</span>
+                        <span className={this.typeColor(Secondary(this.isLoaded(5)))} >{Secondary(this.isLoaded(5))}</span>
                     </div>
                 </div>
-                {/* Button Row */}
+                {/* Evovle Row */}
                 <div className="row">
                     <div className="col">
-                        <button className={"btn btn-warning btn-sm" + (evolve.number.includes(slot4) ? '' : ' invisible')} name='slot4' value={slot4} onClick={this.onChange} >Evolve</button>
+                        <button className={"btn btn-warning btn-sm" + (evolve.number.includes(this.isLoaded(3)) ? '' : ' invisible')} name='3' value={this.isLoaded(3)} onClick={this.onChange} >Evolve</button>
                     </div>
                     <div className="col">
-                        <button className={"btn btn-warning btn-sm" + (evolve.number.includes(slot5) ? '' : ' invisible')} name='slot5' value={slot5} onClick={this.onChange} >Evolve</button>
+                        <button className={"btn btn-warning btn-sm" + (evolve.number.includes(this.isLoaded(4)) ? '' : ' invisible')} name='4' value={this.isLoaded(4)} onClick={this.onChange} >Evolve</button>
                     </div>
                     <div className="col">
-                        <button className={"btn btn-warning btn-sm" + (evolve.number.includes(slot6) ? '' : ' invisible')} name='slot6' value={slot6} onClick={this.onChange} >Evolve</button>
+                        <button className={"btn btn-warning btn-sm" + (evolve.number.includes(this.isLoaded(5)) ? '' : ' invisible')} name='5' value={this.isLoaded(5)} onClick={this.onChange} >Evolve</button>
                     </div>
                 </div>
                 <br />
