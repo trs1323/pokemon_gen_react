@@ -12,7 +12,7 @@ export default class ButtonGen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            generated: false
+            generated: false, gen: '1'
         };
         this.onChange = this.onChange.bind(this)
         this.onClick = this.onClick.bind(this)
@@ -20,7 +20,7 @@ export default class ButtonGen extends Component {
     }
 
     onClick = () => this.setState({
-        team: Generate(),
+        team: Generate(this.state.gen),
         generated: true
 
     })
@@ -39,6 +39,11 @@ export default class ButtonGen extends Component {
         }
 
     }
+
+    changeGen = (e) => this.setState({
+        gen: e.currentTarget.id
+    })
+
 
     typeColor(type) {
         if (type === "Grass") {
@@ -84,11 +89,21 @@ export default class ButtonGen extends Component {
         return ((this.state.team === undefined) ? 0 : this.state.team[slot])
     }
 
+    isActive(num) {
+        return ((this.state.gen === num) ? "gen-btn active" : "gen-btn")
+    }
+
     render() {
         const { team } = this.state
 
         return (
             <div className="container">
+                <button className={this.isActive('0')} onClick={this.changeGen} id='0'>All<br /> Gens</button>
+                <button className={this.isActive('1')} onClick={this.changeGen} id='1'>Kanto<br /> Gen 1</button>
+                <button className={this.isActive('2')} onClick={this.changeGen} id='2'>Johto<br /> Gen 2</button>
+                <button className={this.isActive('3')} onClick={this.changeGen} id='3'>Hoenn<br /> Gen 3</button>
+                <button className={this.isActive('4')} onClick={this.changeGen} id='4'>Sinnoh<br /> Gen 4</button>
+                <button className={this.isActive('5')} onClick={this.changeGen} id='5'>Unova<br /> Gen 5</button>
                 <br />
                 {/* Pictures row 1 */}
                 <div className="row">

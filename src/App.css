@@ -27,8 +27,8 @@
   }
 }
 img{
-  height: 150px;
-  width: 150px;
+  height: 140px;
+  width: 140px;
 }
 
 .type{ 
@@ -43,6 +43,30 @@ img{
   vertical-align: baseline;
   border-radius: .25rem;
 }
+
+.gen-btn{
+  background: #007bff;
+  color: white;
+  border-radius: 0 0 7px 7px;
+  border: 0;
+  outline: none;
+}
+
+.gen-btn:focus{
+  outline: none;
+}
+
+.active{
+  background: #0062ca;
+  padding-bottom: 5px;
+  border: 0;
+  outline: none;
+}
+
+.active:focus{
+  outline: none;
+}
+/* Type Colors */
 
 .normal{
   color: white;
