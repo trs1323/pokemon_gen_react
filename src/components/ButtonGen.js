@@ -109,13 +109,39 @@ export default class ButtonGen extends Component {
                 <div className="row">
                     <div className="col">
                         <img src={require(`../img/${this.isLoaded(0)}.png`)} alt="" />
-
+                        <div className="stats">
+                            <p>Base Stats</p>
+                            <p>Hp: {Object.values(data[this.isLoaded(0)].base.HP.toString())}</p>
+                            <p>Attack: {Object.values(data[this.isLoaded(0)].base.Attack.toString())}</p>
+                            <p>Defense: {Object.values(data[this.isLoaded(0)].base.Defense.toString())}</p>
+                            <p>Sp. Attack: {Object.values(data[this.isLoaded(0)].base["Sp. Attack"].toString())}</p>
+                            <p>Sp. Defense: {Object.values(data[this.isLoaded(0)].base["Sp. Defense"].toString())}</p>
+                            <p>Speed: {Object.values(data[this.isLoaded(0)].base.Speed.toString())}</p>
+                        </div>
                     </div>
                     <div className="col">
                         <img src={require(`../img/${this.isLoaded(1)}.png`)} alt="" />
+                        <div className="stats">
+                            <p>Base Stats</p>
+                            <p>Hp: {Object.values(data[this.isLoaded(1)].base.HP.toString())}</p>
+                            <p>Attack: {Object.values(data[this.isLoaded(1)].base.Attack.toString())}</p>
+                            <p>Defense: {Object.values(data[this.isLoaded(1)].base.Defense.toString())}</p>
+                            <p>Sp. Attack: {Object.values(data[this.isLoaded(1)].base["Sp. Attack"].toString())}</p>
+                            <p>Sp. Defense: {Object.values(data[this.isLoaded(1)].base["Sp. Defense"].toString())}</p>
+                            <p>Speed: {Object.values(data[this.isLoaded(1)].base.Speed.toString())}</p>
+                        </div>
                     </div>
                     <div className="col">
                         <img src={require(`../img/${this.isLoaded(2)}.png`)} alt="" />
+                        <div className="stats">
+                            <p>Base Stats</p>
+                            <p>Hp: {Object.values(data[this.isLoaded(2)].base.HP.toString())}</p>
+                            <p>Attack: {Object.values(data[this.isLoaded(2)].base.Attack.toString())}</p>
+                            <p>Defense: {Object.values(data[this.isLoaded(2)].base.Defense.toString())}</p>
+                            <p>Sp. Attack: {Object.values(data[this.isLoaded(2)].base["Sp. Attack"].toString())}</p>
+                            <p>Sp. Defense: {Object.values(data[this.isLoaded(2)].base["Sp. Defense"].toString())}</p>
+                            <p>Speed: {Object.values(data[this.isLoaded(2)].base.Speed.toString())}</p>
+                        </div>
                     </div>
                 </div>
                 {/* name row 1 */}
@@ -162,12 +188,39 @@ export default class ButtonGen extends Component {
                 <div className="row">
                     <div className="col">
                         <img src={require(`../img/${this.isLoaded(3)}.png`)} alt="" />
+                        <div className="stats">
+                            <p>Base Stats</p>
+                            <p>Hp: {Object.values(data[this.isLoaded(3)].base.HP.toString())}</p>
+                            <p>Attack: {Object.values(data[this.isLoaded(3)].base.Attack.toString())}</p>
+                            <p>Defense: {Object.values(data[this.isLoaded(3)].base.Defense.toString())}</p>
+                            <p>Sp. Attack: {Object.values(data[this.isLoaded(3)].base["Sp. Attack"].toString())}</p>
+                            <p>Sp. Defense: {Object.values(data[this.isLoaded(3)].base["Sp. Defense"].toString())}</p>
+                            <p>Speed: {Object.values(data[this.isLoaded(3)].base.Speed.toString())}</p>
+                        </div>
                     </div>
                     <div className="col">
                         <img src={require(`../img/${this.isLoaded(4)}.png`)} alt="" />
+                        <div className="stats">
+                            <p>Base Stats</p>
+                            <p>Hp: {Object.values(data[this.isLoaded(4)].base.HP.toString())}</p>
+                            <p>Attack: {Object.values(data[this.isLoaded(4)].base.Attack.toString())}</p>
+                            <p>Defense: {Object.values(data[this.isLoaded(4)].base.Defense.toString())}</p>
+                            <p>Sp. Attack: {Object.values(data[this.isLoaded(4)].base["Sp. Attack"].toString())}</p>
+                            <p>Sp. Defense: {Object.values(data[this.isLoaded(4)].base["Sp. Defense"].toString())}</p>
+                            <p>Speed: {Object.values(data[this.isLoaded(4)].base.Speed.toString())}</p>
+                        </div>
                     </div>
                     <div className="col">
                         <img src={require(`../img/${this.isLoaded(5)}.png`)} alt="" />
+                        <div className="stats">
+                            <p>Base Stats</p>
+                            <p>Hp: {Object.values(data[this.isLoaded(5)].base.HP.toString())}</p>
+                            <p>Attack: {Object.values(data[this.isLoaded(5)].base.Attack.toString())}</p>
+                            <p>Defense: {Object.values(data[this.isLoaded(5)].base.Defense.toString())}</p>
+                            <p>Sp. Attack: {Object.values(data[this.isLoaded(5)].base["Sp. Attack"].toString())}</p>
+                            <p>Sp. Defense: {Object.values(data[this.isLoaded(5)].base["Sp. Defense"].toString())}</p>
+                            <p>Speed: {Object.values(data[this.isLoaded(5)].base.Speed.toString())}</p>
+                        </div>
                     </div>
                 </div>
                 {/* Name row 2 */}

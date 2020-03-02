@@ -66,6 +66,28 @@ img{
 .active:focus{
   outline: none;
 }
+
+.col{
+  position: relative;
+  transition: 1s;
+}
+
+.col:hover .stats{
+  opacity: 1;
+}
+
+.stats{
+  position: absolute;
+  opacity: 0;
+  background: #0062ca;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  transition: 1s;
+  top: 0;
+  left: -5%;
+}
+
 /* Type Colors */
 
 .normal{
